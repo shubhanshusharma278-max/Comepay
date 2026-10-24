@@ -7,29 +7,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        body { background-color: #f0f7ff; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        body { background-color: #f0f4f8; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         
-        .main-container { width: 100%; max-width: 400px; background: #f0f7ff; padding: 20px; position: relative; overflow: hidden; }
+        .main-container { width: 100%; max-width: 400px; background: #f0f4f8; padding: 20px; position: relative; overflow: hidden; }
         
         .logo-container { text-align: center; margin-bottom: 30px; margin-top: 20px; }
         .logo-container img { width: 180px; max-width: 100%; height: auto; }
 
         .input-group { position: relative; margin-bottom: 15px; }
-        .input-group i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #0066cc; font-size: 18px; }
-        .input-group input { width: 100%; padding: 16px 20px 16px 50px; border: 1px solid #cce0ff; border-radius: 30px; font-size: 16px; background: #fff; outline: none; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .input-group i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #008e5a; font-size: 18px; }
+        .input-group input { width: 100%; padding: 16px 20px 16px 50px; border: 1px solid #e0e0e0; border-radius: 30px; font-size: 16px; background: #fff; outline: none; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
         .input-group input::placeholder { color: #aaa; }
 
-        .links-row { display: flex; justify-content: space-between; align-items: center; margin: 20px 10px; font-size: 14px; color: #0066cc; font-weight: 500; }
-        .links-row a { color: #0066cc; text-decoration: none; }
+        .links-row { display: flex; justify-content: space-between; align-items: center; margin: 20px 10px; font-size: 14px; color: #008e5a; font-weight: 500; }
+        .links-row a { color: #008e5a; text-decoration: none; }
         
         .privacy-row { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 14px; color: #333; }
-        .privacy-row input { margin-right: 8px; accent-color: #0066cc; width: 16px; height: 16px; }
+        .privacy-row input { margin-right: 8px; accent-color: #008e5a; width: 16px; height: 16px; }
 
         .btn { width: 100%; padding: 16px; border: none; border-radius: 30px; font-size: 18px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .btn-signin { background-color: #0066cc; color: white; box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3); }
+        .btn-signin { background-color: #008e5a; color: white; box-shadow: 0 4px 10px rgba(0, 142, 90, 0.3); }
         .btn-signin:active { transform: scale(0.98); }
         
-        .forgot-link { text-align: center; margin-top: 20px; display: block; color: #0066cc; text-decoration: none; font-weight: 500; }
+        .forgot-link { text-align: center; margin-top: 20px; display: block; color: #008e5a; text-decoration: none; font-weight: 500; }
 
         /* OTP Popup (Modal) */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; z-index: 1000; }
@@ -39,23 +39,23 @@
         .modal-header h2 { font-size: 22px; color: #222; }
         .close-btn { background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; color: #666; cursor: pointer; }
         
-        .modal-text { font-size: 14px; color: #0066cc; margin-bottom: 10px; line-height: 1.4; font-weight: 500; }
-        .modal-phone { font-size: 15px; font-weight: bold; color: #0066cc; margin-bottom: 20px; }
+        .modal-text { font-size: 14px; color: #008e5a; margin-bottom: 10px; line-height: 1.4; font-weight: 500; }
+        .modal-phone { font-size: 15px; font-weight: bold; color: #008e5a; margin-bottom: 20px; }
 
         .otp-input-row { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 30px; padding: 5px; margin-bottom: 20px; overflow: hidden; }
-        .otp-input-row i { color: #0066cc; font-size: 18px; margin-left: 15px; margin-right: 10px; flex-shrink: 0; }
+        .otp-input-row i { color: #008e5a; font-size: 18px; margin-left: 15px; margin-right: 10px; flex-shrink: 0; }
         .otp-input-row input { flex: 1; min-width: 0; border: none; outline: none; font-size: 15px; padding: 5px; }
-        .btn-send { background: #0066cc; color: white; border: none; padding: 10px 15px; border-radius: 25px; font-size: 14px; cursor: pointer; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+        .btn-send { background: #008e5a; color: white; border: none; padding: 10px 15px; border-radius: 25px; font-size: 14px; cursor: pointer; font-weight: 600; white-space: nowrap; flex-shrink: 0; }
         
-        .btn-confirm { background: #0066cc; color: white; box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3); }
+        .btn-confirm { background: #008e5a; color: white; box-shadow: 0 4px 10px rgba(0, 142, 90, 0.3); }
     </style>
 </head>
 <body>
 
     <div class="main-container">
         <div class="logo-container">
-          
-        <img src="IMG_20260916_140630_873.jpg" alt="ComePay">
+            <!-- Yahan apni ComePay image ka naam daalein, jaise: IMG_2023.jpg -->
+            <img src="IMG_1234.jpg" alt="ComePay">
         </div>
 
         <form id="loginForm">
@@ -76,7 +76,7 @@
 
             <div class="links-row">
                 <a href="#">Register</a>
-                <label><input type="radio" name="remember" style="accent-color: #0066cc;"> Remember Me</label>
+                <label><input type="radio" name="remember" style="accent-color: #008e5a;"> Remember Me</label>
             </div>
 
             <div class="privacy-row">
@@ -208,4 +208,4 @@
         });
     </script>
 </body>
-  </html>
+</html>
